@@ -8,12 +8,23 @@
 	class CategoryManager extends Manager
 	{
 		
-		// on indique la classe POO et la table correspondante en BDD pour le manager concerné
 		protected string $className = "Model\Entities\Category";
 		protected string $tableName = "category";
 		
 		public function __construct()
 		{
-			DAO::connect();
+			parent::connect();
+		}
+		
+		public function findOneByTitle($title)
+		{
+			$sql = "SELECT c.id_category, c.title
+                FROM " . $this->tableName . " c
+                WHERE c.title = :title";
+			
+			return $this->getOneOrNullResult(
+				DAO::select($sql, ['title' => $title] ),
+				$this->className
+			);
 		}
 	}

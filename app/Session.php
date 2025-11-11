@@ -8,21 +8,27 @@
 		public static function start() : void
 		{
 			if( session_status() === PHP_SESSION_NONE ) {
-				// La session n’est pas démarrée
-				session_start(); // Lance la session si nécessaire
+				/**
+				 * La session n’est pas démarrée
+				 * */
+				session_start();
+				/**
+				 * Lance la session si nécessaire
+				 */
 			}
 			
 		}
 		
-		public static function isActive(string $ctrl, string $action): string {
-			return ($_GET['ctrl'] ?? '') === $ctrl && ($_GET['action'] ?? '') === $action ? 'active' : '';
+		public static function isActive( string $ctrl, string $action ) : string
+		{
+			return ( $_GET['ctrl'] ?? '' ) === $ctrl && ( $_GET['action'] ?? '' ) === $action ? 'active' : '';
 		}
 		
 		
 		private static array $categories = ['error', 'success'];
 		
 		/**
-		 *   ajoute un message en session, dans la catégorie $categ
+		 *   Ajoute un message en session, dans la catégorie $categ
 		 */
 		public static function addFlash( $categ, $msg ) : void
 		{
@@ -30,7 +36,7 @@
 		}
 		
 		/**
-		 *   renvoie un message de la catégorie $categ, s'il y en a !
+		 *   Renvoie un message de la catégorie $categ, s’il y en a !
 		 */
 		public static function getFlash( $categ )
 		{
@@ -44,7 +50,7 @@
 		}
 		
 		/**
-		 *   met un user dans la session (pour le maintenir connecté)
+		 *   Mets un user dans la session (pour le maintenir connecté)
 		 */
 		public static function setUser( $user ) : void
 		{
@@ -58,7 +64,9 @@
 		
 		public static function isAdmin() : bool
 		{
-			// attention de bien définir la méthode "hasRole" dans l'entité User en fonction de la façon dont sont gérés les rôles en base de données
+			/**
+			 * Attention de bien définir la méthode "hasRole" dans l'entité User en fonction de la façon dont sont gérés les rôles en base de données
+			 */
 			if( self::getUser() && self::getUser()->hasRole( "ROLE_ADMIN" ) ) {
 				return true;
 			}
