@@ -38,9 +38,9 @@
 	class SecurityController extends AbstractController implements ControllerInterface
 	{
 		
-		public function __construct( UserManager $userManager )
+		public function __construct()
 		{
-			$this->userManager = $userManager;
+			$this->userManager = new UserManager();
 		}
 		
 		public function index() : array

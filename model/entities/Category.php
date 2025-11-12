@@ -11,17 +11,8 @@
 	final class Category extends Entity
 	{
 		
-		/**
-		 * @var int
-		 */
 		private int $id;
-		/**
-		 * @var string
-		 */
 		private string $name;
-		/**
-		 * @var bool
-		 */
 		private bool $closed;
 		
 		/**

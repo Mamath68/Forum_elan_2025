@@ -54,18 +54,12 @@
 	#[AllowDynamicProperties]
 	class ForumController extends AbstractController implements ControllerInterface
 	{
-		/**
-		 * @param PostManager     $postManager
-		 * @param CategoryManager $categoryManager
-		 * @param TopicManager    $topicManager
-		 * @param UserManager     $userManager
-		 */
-		public function __construct( PostManager $postManager, CategoryManager $categoryManager, TopicManager $topicManager, UserManager $userManager )
+		public function __construct(  )
 		{
-			$this->postManager = $postManager;
-			$this->categoryManager = $categoryManager;
-			$this->topicManager = $topicManager;
-			$this->userManager = $userManager;
+			$this->postManager = new PostManager();
+			$this->categoryManager = new CategoryManager();
+			$this->topicManager = new TopicManager();
+			$this->userManager = new UserManager();
 		}
 		
 		/**

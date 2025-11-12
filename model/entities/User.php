@@ -12,29 +12,11 @@
 	 */
 	final class User extends Entity
 	{
-		/**
-		 * @var int
-		 */
 		private int $id;
-		/**
-		 * @var string
-		 */
 		private string $pseudo;
-		/**
-		 * @var string
-		 */
 		private string $email;
-		/**
-		 * @var string
-		 */
 		private string $password;
-		/**
-		 * @var \DateTime
-		 */
 		private DateTime $registerDate;
-		/**
-		 * @var array
-		 */
 		private array $role;
 		
 		/**

@@ -12,26 +12,11 @@
 	 */
 	final class Post extends Entity
 	{
-		
-		/**
-		 * @var int
-		 */
+
 		private int $id;
-		/**
-		 * @var string
-		 */
 		private string $body;
-		/**
-		 * @var DateTime
-		 */
-		private DateTime $creationdate;
-		/**
-		 * @var \Model\Entities\Topic
-		 */
+		private DateTime $creationDate;
 		private Topic $topic;
-		/**
-		 * @var \Model\Entities\User
-		 */
 		private User $user;
 		
 		/**

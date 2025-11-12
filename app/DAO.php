@@ -18,9 +18,9 @@
 	{
 		
 		private static string $host = 'mysql:host=127.0.0.1;port=3306';
-		private static string $dbname = 'forum_valeria';
-		private static string $dbuser = 'root';
-		private static string $dbpass = '';
+		private static string $dbname = 'forum';
+		private static string $dbuser = 'Mamath68200';
+		private static string $dbpass = 'Teutin@181166';
 		
 		private static PDO $bdd;
 		
