@@ -94,24 +94,27 @@
 		echo $result;
 	} else {
 		ob_start();
+		
 		/**
-		 * Lance un buffer (tampon de sortie)
-		 */
-		$meta_description = $result['meta_description'];
+		 * On récupère les données de la vue </br>
+		 *
+		 * On prépare le titre et la meta description*/
+		$title = $result['data']['title'];
+		$meta_description = $result['data']['meta_description'];
+		
 		/**
-		 * La vue s’insère dans le buffer qui devra être vidé au milieu du layout
+		 * On rend la vue
 		 */
 		include( $result['view'] );
+		
 		/**
-		 * Je place cet affichage dans une variable
+		 * On capture le contenu de la vue
 		 */
-		$page = ob_get_contents();
+		$page = ob_get_clean();
+		
 		/**
-		 * j'efface le tampon
-		 */
-		ob_end_clean();
-		/**
-		 * j'affiche le template principal (layout)
+		 * On affiche le layout
 		 */
 		include VIEW_DIR . "layout.php";
+		
 	}

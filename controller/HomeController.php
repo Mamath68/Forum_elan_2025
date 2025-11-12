@@ -1,38 +1,17 @@
 <?php
 	
-	/**
-	 * Ouvre le namespace Controller
-	 */
-	
 	namespace Controller;
-	
-	/**
-	 * Fait appel à AbstractController
-	 */
 	
 	use AllowDynamicProperties;
 	use App\AbstractController;
-	
-	/**
-	 * Fait appel à ControllerInterface
-	 */
-	
 	use App\ControllerInterface;
-	
-	/**
-	 * Fait appel à UserManager
-	 */
-	
 	use Model\Managers\UserManager;
 	
-	/**
-	 * Class HomeController hérite de la classe AbstractController et implémente ControllerInterface.
-	 */
 	#[AllowDynamicProperties]
 	class HomeController extends AbstractController implements ControllerInterface
 	{
 		
-		public function __construct( )
+		public function __construct()
 		{
 			$this->userManager = new UserManager();
 		}
@@ -40,9 +19,11 @@
 		public function index() : array
 		{
 			return [
-				"title" => "Forum",
-				"meta_description" => "Page d'accueil du forum",
-				"view" => VIEW_DIR . "home.php"
+				"view" => VIEW_DIR . "home.php",
+				"data" => [
+					"title" => "Forum",
+					"meta_description" => "Page d'accueil du forum",
+				]
 			];
 		}
 		
@@ -52,7 +33,6 @@
 			return [
 				
 				"view" => VIEW_DIR . "security/listUsers.php",
-				
 				"data" => [
 					"title" => "Les utilisateurs",
 					"meta_description" => "Liste des utilisateurs",
@@ -71,7 +51,7 @@
 				"data" => [
 					"user" => $this->userManager->findOneById( $id ),
 					"title" => "Profile de $username",
-					"meta_description" => "Règles d'usages du forum"
+					"meta_description" => "Profile de $username"
 				]
 			];
 		}

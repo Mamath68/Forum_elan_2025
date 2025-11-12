@@ -72,16 +72,16 @@
 		 */
 		public function getCreationDate() : string
 		{
-			return $this->creationdate->format( "d/m/Y à H:i" );
+			return $this->creationDate->format( "d/m/Y à H:i" );
 		}
 		
 		/**
-		 * @throws DateMalformedStringException | DateTime
+		 * @throws DateMalformedStringException
 		 */
-		public function setCreationDate( $date ) : DateTime
+		public function setCreationDate( $creationDate ) : Post
 		{
-			return $this->creationdate = new DateTime( $date );
-			
+			$this->creationDate = new DateTime( $creationDate );
+			return $this;
 		}
 		
 		/**

@@ -87,7 +87,7 @@
 									"pseudo" => $nickname,
 									"email" => $email,
 									"password" => $hash,
-									"roleUser" => json_encode( ["ROLE_USER"] ),
+									"role" => json_encode( ["ROLE_USER"] ),
 								] )
 							) {
 								return [

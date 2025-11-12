@@ -1,5 +1,6 @@
 <?php
-$category = $result["data"]['category'];
+    global $result;
+    $category = $result["data"]['category'];
 
 ?>
 

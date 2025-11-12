@@ -1,50 +1,21 @@
 <?php
 	
-	/** Ouvre le namespace Controller*/
 	
 	namespace Controller;
 	
 	use AllowDynamicProperties;
 	
-	/**
-	 * Fait appel à Session
-	 */
-	
 	use App\Session;
-	
-	/**
-	 * Fait appel à l'AbstractController
-	 */
 	
 	use App\AbstractController;
 	
-	/**
-	 * Fait appel à ControllerInterface
-	 */
-	
 	use App\ControllerInterface;
-	
-	/**
-	 * Fait appel à TopicManager
-	 */
 	
 	use Model\Managers\TopicManager;
 	
-	/**
-	 * Fait appel à PostManager
-	 */
-	
 	use Model\Managers\PostManager;
 	
-	/**
-	 * Fait appel à UserManager
-	 */
-	
 	use Model\Managers\UserManager;
-	
-	/**
-	 * Fait appel à CategoryManager
-	 */
 	
 	use Model\Managers\CategoryManager;
 	
@@ -65,7 +36,7 @@
 		/**
 		 * Fonction gerant la list des catégories
 		 */
-		public function listcategories() : array
+		public function index() : array
 		{
 			
 			return [
@@ -151,14 +122,16 @@
 		 */
 		public function findTopicByCat( $id ) : array
 		{
+			$category = $this->categoryManager->findOneById( $id );
+			$topic = $this->topicManager->findTopicsByCat( $id );
 			
 			return [
 				"view" => VIEW_DIR . "forum/detailCategory.php",
 				"data" => [
-					"title" => "Les Topics",
+					"title" => $category->getName(),
 					"meta_description" => "Liste des topics",
-					"category" => $this->categoryManager->findOneById( $id ),
-					"topics" => $this->topicManager->findTopicsByCat( $id ),
+					"category" => $category,
+					"topics" => $topic,
 				]
 			];
 		}
@@ -191,8 +164,6 @@
 					"view" => VIEW_DIR . "forum/detailTopic.php",
 					"data" =>
 						[
-							"title" => "Ajouter un Post",
-							"meta_description" => "Page d'ajout d'un post",
 							"post" => $this->postManager->findOneById( $id )
 						]
 				];
@@ -205,14 +176,15 @@
 		 */
 		public function findPostByTopic( $id ) : array
 		{
-			
+			$topic = $this->topicManager->findOneById( $id );
+			$post = $this->postManager->findOneById( $id );
 			return [
 				"view" => VIEW_DIR . "forum/detailTopic.php",
 				"data" => [
-					"title" => "Les post",
+					"title" => $topic->getTitle(),
 					"meta_description" => "Liste des posts",
-					"topic" => $this->topicManager->findOneById( $id ),
-					"posts" => $this->postManager->findPostsByTopic( $id ),
+					"topic" => $topic,
+					"posts" => $post,
 				]
 			];
 		}

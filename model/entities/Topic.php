@@ -4,6 +4,7 @@
 	
 	use App\Entity;
 	use DateTime;
+	use DateMalformedStringException;
 	
 	/**
 	 * En programmation orientée objet, une classe finale (final class) est une classe que vous ne pouvez pas étendre, c’est-à-dire qu’aucune autre classe ne peut hériter de cette classe. </br>
@@ -64,6 +65,40 @@
 		{
 			$this->title = $title;
 			return $this;
+		}
+		
+		public function getCategory() : Category
+		{
+			return $this->category;
+		}
+		
+		public function setCategory( Category $category ) : void
+		{
+			$this->category = $category;
+		}
+		
+		public function getCreationDate() : string
+		{
+			return $this->creationDate->format( "d/m/Y à H:i" );
+		}
+		
+		/**
+		 * @throws DateMalformedStringException
+		 */
+		public function setCreationDate( $creationDate ) : Topic
+		{
+			$this->creationDate = new DateTime( $creationDate );
+			return $this;
+		}
+		
+		public function isClosed() : bool
+		{
+			return $this->closed;
+		}
+		
+		public function setClosed( bool $closed ) : void
+		{
+			$this->closed = $closed;
 		}
 		
 		/**

@@ -1,13 +1,16 @@
 <?php
     global $result;
     $categories = $result["data"]["categories"];
+
+    use App\Session as Session;
+
 ?>
 
-    <h1>Liste des Catégorie</h1>
+    <h1>Liste des Catégories</h1>
 
 <?php
 
-    if( App\Session::isAdmin() ) {
+    if( Session::isAdmin() ) {
 
         echo '
 <div class="container text-center">
@@ -16,7 +19,7 @@
       <section>';
         foreach( $categories as $category ) {
             echo '<div class="text-center padd">
-        <a href="index.php?ctrl=forum&action=findTopicByCat&id=' . $category->getId() . '">' . $category->getTitle() . '</a></div>';
+        <a href="index.php?ctrl=forum&action=findTopicByCat&id=' . $category->getId() . '">' . $category->getName() . '</a></div>';
         }
         echo '
     </section>
@@ -26,7 +29,7 @@
 
         include_once( "addCategory.php" );
 
-    } else if( App\Session::getUser() ) {
+    } else if( Session::getUser() ) {
         echo '
   <div class="container text-center">
     <div class="row">
@@ -34,7 +37,7 @@
         <section>';
         foreach( $categories as $category ) {
             echo '<div class="text-center padd">
-          <a href="index.php?ctrl=forum&action=findTopicByCat&id=' . $category->getId() . '">' . $category->getTitle() . '</a></div>';
+          <a href="index.php?ctrl=forum&action=findTopicByCat&id=' . $category->getId() . '">' . $category->getName() . '</a></div>';
         }
         echo '
       </section>
@@ -50,7 +53,7 @@
         <section>';
         foreach( $categories as $category ) {
             echo '<div class="text-center padd">
-          <a href="index.php?ctrl=forum&action=findTopicByCat&id=' . $category->getId() . '">' . $category->getTitle() . '</a></div>';
+          <a href="index.php?ctrl=forum&action=findTopicByCat&id=' . $category->getId() . '">' . $category->getName() . '</a></div>';
         }
         echo '
       </section>

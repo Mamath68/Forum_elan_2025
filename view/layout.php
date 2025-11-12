@@ -1,5 +1,6 @@
 <?php
     global $meta_description;
+    global $title;
     global $page;
 
     use App\Session as Session;
@@ -20,7 +21,7 @@
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
-    <title>FORUM</title>
+    <title><?= $title ?></title>
 </head>
 <body>
 <h3 class="message error">
@@ -49,10 +50,6 @@
                             <a class="nav-link <?= Session::isActive( 'home', 'index' ) ?>" aria-current="page"
                                href="index.php?ctrl=home&action=index">Accueil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?= Session::isActive( 'home', 'about' ) ?>"
-                               href="index.php?ctrl=home&action=about">A Propos</a>
-                        </li>
                         <!--Si l'utilisateur est administrateur-->
                         <?php if( Session::isAdmin() ) :
                             ?>
@@ -77,10 +74,10 @@
                                        data-bs-toggle="dropdown"
                                        aria-expanded="false">
                                         <span class="fas fa-user"></span>&nbsp;
-                                        <?= Session::getUser()->getNickname() ?>
+                                        <?= Session::getUser()->getPseudo() ?>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="index.php?ctrl=security&action=profile">Profile</a>
+                                        <li><a class="dropdown-item" href="index.php?ctrl=home&action=detailUser&id=<?=Session::getUser()->getId()?>">Profile</a>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider">
