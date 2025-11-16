@@ -6,58 +6,33 @@
 
 ?>
 
-    <h1>Liste des Catégories</h1>
+<h1>Liste des Catégories</h1>
 
 <?php
 
-    if( Session::isAdmin() ) {
+    if( Session::isAdmin() ) :
+        include_once( "forms/addCategory.php" );
 
-        echo '
+    endif; ?>
 <div class="container text-center">
-  <div class="row">
-    <div class="col">
-      <section>';
-        foreach( $categories as $category ) {
-            echo '<div class="text-center padd">
-        <a href="index.php?ctrl=forum&action=findTopicByCat&id=' . $category->getId() . '">' . $category->getName() . '</a></div>';
-        }
-        echo '
-    </section>
-    </div>
-  </div>
-</div>';
-
-        include_once( "addCategory.php" );
-
-    } else if( Session::getUser() ) {
-        echo '
-  <div class="container text-center">
     <div class="row">
-      <div class="col">
-        <section>';
-        foreach( $categories as $category ) {
-            echo '<div class="text-center padd">
-          <a href="index.php?ctrl=forum&action=findTopicByCat&id=' . $category->getId() . '">' . $category->getName() . '</a></div>';
-        }
-        echo '
-      </section>
-      </div>
+        <?php foreach( $categories as $category ): ?>
+            <div class="col-md-3 col-sm-4 col-xs-6 mb-3">
+                <div class="card text-bg-dark mb-3">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <?= $category->getName() ?>
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <h5>
+                            <a href="index.php?ctrl=forum&action=findTopicByCat&id=<?= $category->getId() ?>">
+                                Voir le Topic
+                            </a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
     </div>
-  </div>';
-
-    } else {
-        echo '
-  <div class="container text-center">
-    <div class="row">
-      <div class="col">
-        <section>';
-        foreach( $categories as $category ) {
-            echo '<div class="text-center padd">
-          <a href="index.php?ctrl=forum&action=findTopicByCat&id=' . $category->getId() . '">' . $category->getName() . '</a></div>';
-        }
-        echo '
-      </section>
-      </div>
-    </div>
-  </div>';
-    }
+</div>

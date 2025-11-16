@@ -22,15 +22,16 @@
                 <div class="card" style="width:30%; margin:25px;">
                     <div class="card-body">
                         <h5 class="card-title text-center">
-                            <a href="index.php?ctrl=forum&action=findPostByTopic&id=<?= $topic->getId() ?>"><?=
-                                    $topic->getTitle() ?></a>
+                            <a href="index.php?ctrl=forum&action=findPostByTopic&id=<?= $topic->getId() ?>">
+                                <?= $topic->getTitle() ?>
+                            </a>
                         </h5>
                         <p class="card-text text-center"><?= $topic->getCreationDate() ?></p>
                         <p class="card-text text-center"><?= $topic->getUser()->getPseudo() ?></p>
                     </div>
                 </div>
             <?php endforeach;
-        else :?>
+        else : ?>
             <p>PAS DE TOPIC POUR CETTE CATEGORIE</p>
         <?php endif; ?>
 </div>

@@ -57,7 +57,7 @@
 		public function registerForm() : array
 		{
 			return [
-				"view" => VIEW_DIR . "security/register.php",
+				"view" => VIEW_DIR . "security/form/register.php",
 				"data" => [
 					"title" => "Page d'inscription",
 					"meta_description" => "Page d'inscription du Forum"
@@ -91,7 +91,7 @@
 								] )
 							) {
 								return [
-									"view" => VIEW_DIR . "security/login.php",
+									"view" => VIEW_DIR . "security/form/login.php",
 									"data" => [
 										"title" => "Page de connexion",
 										"meta_description" => "Page de connexion du forum"
@@ -103,7 +103,7 @@
 				}
 			}
 			return [
-				"view" => VIEW_DIR . "security/register.php",
+				"view" => VIEW_DIR . "security/form/register.php",
 				"data" => [
 					"title" => "Page d'inscription",
 					"meta_description" => "Page d'inscription du forum"
@@ -114,7 +114,7 @@
 		public function loginForm() : array
 		{
 			return [
-				"view" => VIEW_DIR . "security/login.php",
+				"view" => VIEW_DIR . "security/form/login.php",
 				"data" => [
 					"title" => "Page de connexion",
 					"meta_description" => "page de connexion du forum"
@@ -141,7 +141,7 @@
 						header( 'Location:index.php?ctrl=security&action=index' );
 					} else {
 						return [
-							"view" => VIEW_DIR . "security/login.php",
+							"view" => VIEW_DIR . "security/form/login.php",
 							"data" => [
 								"title" => "Page de connexion",
 								"meta_description" => "Page de connexion du forum"
@@ -151,7 +151,7 @@
 				}
 			}
 			return [
-				"view" => VIEW_DIR . "security/login.php",
+				"view" => VIEW_DIR . "security/form/login.php",
 				"data" => [
 					"title" => "Page de connexion",
 					"meta_description" => "Page de connexion du forum"

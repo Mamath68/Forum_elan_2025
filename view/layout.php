@@ -77,7 +77,8 @@
                                         <?= Session::getUser()->getPseudo() ?>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="index.php?ctrl=home&action=detailUser&id=<?=Session::getUser()->getId()?>">Profile</a>
+                                        <li><a class="dropdown-item"
+                                               href="index.php?ctrl=home&action=detailUser&id=<?= Session::getUser()->getId() ?>">Profile</a>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider">
@@ -96,12 +97,12 @@
                                         Connectique
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="index.php?ctrl=security&action=login">Connexion</a>
+                                        <li><a class="dropdown-item" href="index.php?ctrl=security&action=loginForm">Connexion</a>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
-                                        <li><a class="dropdown-item" href="index.php?ctrl=security&action=register">Inscription</a>
+                                        <li><a class="dropdown-item" href="index.php?ctrl=security&action=registerForm">Inscription</a>
                                         </li>
                                     </ul>
                                 </li>

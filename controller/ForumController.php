@@ -58,13 +58,13 @@
 		{
 			if( !empty( $_POST ) ) {
 				
-				$title = filter_input( INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+				$title = filter_input( INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 				
 				$category = $this->categoryManager->findOneByTitle( $title );
 				
 				if( !$category ) {
 					$this->categoryManager->add( [
-						"title" => $title,
+						"name" => $title,
 					] );
 				}
 			}
@@ -105,7 +105,7 @@
 			}
 			return
 				[
-					"view" => VIEW_DIR . "forum/addTopics.php",
+					"view" => VIEW_DIR . "forum/forms/addTopics.php",
 					"data" =>
 						[
 							"title" => "Ajouter un Topic",
@@ -161,7 +161,7 @@
 			}
 			return
 				[
-					"view" => VIEW_DIR . "forum/detailTopic.php",
+					"view" => VIEW_DIR . "forum/forms/detailTopic.php",
 					"data" =>
 						[
 							"post" => $this->postManager->findOneById( $id )

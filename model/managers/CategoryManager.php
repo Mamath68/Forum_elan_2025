@@ -16,14 +16,14 @@
 			parent::connect();
 		}
 		
-		public function findOneByTitle($title)
+		public function findOneByTitle($name)
 		{
-			$sql = "SELECT c.id_category, c.title
+			$sql = "SELECT c.id_category, c.name
                 FROM " . $this->tableName . " c
-                WHERE c.title = :title";
+                WHERE c.name = :name";
 			
 			return $this->getOneOrNullResult(
-				DAO::select($sql, ['title' => $title] ),
+				DAO::select($sql, ['name' => $name] ),
 				$this->className
 			);
 		}
