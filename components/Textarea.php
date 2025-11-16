@@ -11,6 +11,7 @@
             $placeholder = $props['placeholder'] ?? '';
             $value = $props['value'] ?? '';
             $rows = $props['rows'] ?? 5;
+            $cols = $props['cols'] ?? 5;
             $class = $props['class'] ?? 'form-control';
             $required = isset( $props['required'] ) && $props['required'] ? 'required' : '';
             ?>
@@ -27,6 +28,7 @@
                     class="<?= htmlspecialchars( $class ) ?>"
                     placeholder="<?= htmlspecialchars( $placeholder ) ?>"
                     rows="<?= htmlspecialchars( $rows ) ?>"
+                    cols="<?= htmlspecialchars( $cols ) ?>"
                 <?= $required ?>
             ><?= htmlspecialchars( $value ) ?></textarea>
             <?php FormGroup::close();

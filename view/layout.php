@@ -118,7 +118,7 @@
 <main class="container">
     <?= $page ?>
 </main>
-<footer>
+<footer class="container">
     <p>&copy; <?= date_create()->format( "Y" ) ?> - <a href="#">Règlement du forum</a> - <a href="#">Mentions
             légales</a></p>
 </footer>

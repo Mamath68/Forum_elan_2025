@@ -12,7 +12,6 @@
 
     if( Session::isAdmin() ) :
         include_once( "forms/addCategory.php" );
-
     endif; ?>
 <div class="container text-center">
     <div class="row">

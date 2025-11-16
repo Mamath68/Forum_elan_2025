@@ -47,7 +47,7 @@
 		/**
 		 * @param $id
 		 *
-		 * @return \Generator|null
+		 * @return Generator|null
 		 */
 		public function findTopicsByCat( $id ) : ?Generator
 		{

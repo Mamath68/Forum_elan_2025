@@ -10,7 +10,7 @@
 			$action = $props['action'] ?? '';
 			$class = $props['class'] ?? '';
 			
-			echo "<form method='$method' action='$action' class='$class'>";
+			echo "<form method='$method' action='$action' class='$class' enctype='multipart/form-data'>" ;
 		}
 		
 		public static function close() : void

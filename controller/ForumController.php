@@ -25,7 +25,7 @@
 	#[AllowDynamicProperties]
 	class ForumController extends AbstractController implements ControllerInterface
 	{
-		public function __construct(  )
+		public function __construct()
 		{
 			$this->postManager = new PostManager();
 			$this->categoryManager = new CategoryManager();
@@ -79,11 +79,28 @@
 		}
 		
 		/**
+		 * @param $id
+		 *
 		 * @return array
 		 */
-		public function addTopic() : array
+		public function addTopic($id) : array
 		{
-			$id = $_GET['id'];
+			// Vérifier ID dans l’URL
+			$category = $this->categoryManager->findOneById( $id );
+			if( !$category ) {
+				$this->redirectTo( "forum", "index" );
+			}
+			
+			// Vérifier connexion utilisateur
+			if( !Session::getUser() ) {
+				$this->redirectTo( "security", "loginForm" );
+			}
+			
+			if( !$category ) {
+				$this->redirectTo( "forum", "index" );
+			}
+			
+			// Traitement du formulaire
 			if( !empty( $_POST ) ) {
 				
 				$title = filter_input( INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS );
@@ -91,29 +108,29 @@
 				
 				if( $title ) {
 					
-					(
-					!$this->topicManager->add(
-						[
-							"title" => $title,
-							"user_id" => $user,
-							"category_id" => $id,
-						],
-					)
-					);
+					$inserted = $this->topicManager->add( [
+						"title" => $title,
+						"user_id" => $user,
+						"category_id" => $id,
+					] );
+					
+					if( $inserted ) {
+						$this->redirectTo( "forum", "index" );
+					}
 				}
-				$this->redirectTo( "forum", "detailCategory" );
 			}
-			return
-				[
-					"view" => VIEW_DIR . "forum/forms/addTopics.php",
-					"data" =>
-						[
-							"title" => "Ajouter un Topic",
-							"meta_description" => "Page de création d'un topic",
-							"category" => $this->categoryManager->findOneById( $id )
-						]
-				];
+			
+			// Retour de la vue
+			return [
+				"view" => VIEW_DIR . "forum/forms/addTopics.php",
+				"data" => [
+					"title" => "Ajouter un Topic",
+					"meta_description" => "Page de création d'un topic",
+					"category" => $category
+				]
+			];
 		}
+		
 		
 		/**
 		 * @param $id
@@ -177,7 +194,7 @@
 		public function findPostByTopic( $id ) : array
 		{
 			$topic = $this->topicManager->findOneById( $id );
-			$post = $this->postManager->findOneById( $id );
+			$post = $this->postManager->findPostsByTopic( $id );
 			return [
 				"view" => VIEW_DIR . "forum/detailTopic.php",
 				"data" => [

@@ -25,7 +25,6 @@
             <div class="card-body">
                 <a href="index.php?ctrl=forum&action=listTopics" class="card-link">Liens vers mes Sujets de
                     Conversation</a>
-                <a href="index.php?ctrl=security&action=logout" class="card-link">Déconnexion</a>
             </div>
         </div>
 
@@ -53,7 +52,6 @@
             <div class="card-body">
                 <a href="index.php?ctrl=forum&action=listTopics" class="card-link">Liens vers mes Sujets de
                     Conversation</a>
-                <a href="index.php?ctrl=security&action=logout" class="card-link">Déconnexion</a>
             </div>
         </div>
         <?php
