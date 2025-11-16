@@ -1,6 +1,6 @@
 <?php
 	
-	namespace components;
+	namespace components\Forms;
 	
 	class Form
 	{

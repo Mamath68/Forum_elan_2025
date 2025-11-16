@@ -1,12 +1,12 @@
 <?php
     global $result;
-
-    use components\Button;
-    use components\Form;
-    use components\FormGroup;
-    use components\Textarea;
-
-    $topic = $result["data"]['topic'];
+	
+	use components\Basics\Button;
+	use components\Forms\Form;
+	use components\Forms\FormGroup;
+	use components\Forms\Textarea;
+	
+	$topic = $result["data"]['topic'];
     $posts = $result["data"]['posts'];
 
     FormGroup::open();

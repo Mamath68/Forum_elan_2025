@@ -1,13 +1,13 @@
 <?php
     global $result;
     $category = $result["data"]['category'];
-
-    use components\Button;
-    use components\Form;
-    use components\FormGroup;
-    use components\Input;
-
-    FormGroup::open();
+	
+	use components\Basics\Button;
+	use components\Forms\Form;
+	use components\Forms\FormGroup;
+	use components\Forms\Input;
+	
+	FormGroup::open();
     Form::open( [
             "method" => "post",
             "action" => "index.php?ctrl=forum&action=addTopic&id={$category->getId()}"

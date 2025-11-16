@@ -1,13 +1,12 @@
 <?php
 
-    use components\Button;
-    use components\Form;
-    use components\FormGroup;
-    use components\Input;
+    use components\Basics\Button;
+    use components\Basics\Text;
+    use components\Forms\Form;
+    use components\Forms\FormGroup;
+    use components\Forms\Input;
 
-?>
-    <h1>S'inscrire</h1>
-<?php
+    Text::make( "S'inscrire", "h1", ["class" => "text-center text-primary mb-3"] );
     FormGroup::open();
     Form::open( [
             "method" => "post",
