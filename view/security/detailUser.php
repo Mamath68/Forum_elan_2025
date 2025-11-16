@@ -2,15 +2,14 @@
 
     use App\Session as Session;
 
-    if( Session::isAdmin() ) {
-        ?>
-        <div class="card text-center" style="width: 20em; margin-left: 40%;padding-top:2em;">
+    if( Session::isAdmin() ) : ?>
+        <div class="card text-center col-3 mx-auto pt-4 my-3">
             <span class="fas fa-user"></span>
             <div class="card-body">
                 <h5 class="card-title">
                     <?= Session::getUser()->getPseudo() ?>
                 </h5>
-                <p>Bienvenu, Administateur</p>
+                <p>Bienvenue, Administateur</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
@@ -28,10 +27,9 @@
             </div>
         </div>
 
-        <?php
-    } else if( Session::getUser() ) {
+    <?php elseif( Session::getUser() ):
         ?>
-        <div class="card text-center" style="width: 20em; margin-left: 40%;padding-top:2em;">
+        <div class="card text-center col-3 mx-auto pt-4">
             <span class="fas fa-user"></span>
             <div class="card-body">
                 <h5 class="card-title">
@@ -54,8 +52,4 @@
                     Conversation</a>
             </div>
         </div>
-        <?php
-
-    }
-
-?>
+    <?php endif;

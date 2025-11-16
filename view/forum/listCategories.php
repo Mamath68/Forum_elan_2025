@@ -8,11 +8,9 @@
 
 <h1>Liste des Catégories</h1>
 
-<?php
-
-    if( Session::isAdmin() ) :
-        include_once( "forms/addCategory.php" );
-    endif; ?>
+<?php if( Session::isAdmin() ) :
+    include_once( "forms/addCategory.php" );
+endif; ?>
 <div class="container text-center">
     <div class="row">
         <?php foreach( $categories as $category ): ?>

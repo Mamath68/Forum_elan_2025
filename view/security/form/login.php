@@ -39,6 +39,7 @@
 
     Form::close();
     FormGroup::close();
+
     Button::create( [
             "text" => "Pas encore de compte ? Enregistrez-vous !",
             "href" => "index.php?ctrl=security&action=registerForm",
