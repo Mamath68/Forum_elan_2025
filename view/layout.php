@@ -23,13 +23,7 @@
     <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
     <title><?= $title ?></title>
 </head>
-<body>
-<h3 class="message error">
-    <?= Session::getFlash( "error" ) ?>
-</h3>
-<h3 class="message success">
-    <?= Session::getFlash( "success" ) ?>
-</h3>
+<body class="d-flex flex-column min-vh-100">
 <header>
     <nav class="navbar bg-body-tertiary navbar-expand-lg">
         <div class="container">
@@ -115,7 +109,13 @@
     </nav>
 </header>
 
-<main class="container">
+<main class="container flex-fill">
+    <h3 class="message error">
+        <?= Session::getFlash( "error" ) ?>
+    </h3>
+    <h3 class="message success">
+        <?= Session::getFlash( "success" ) ?>
+    </h3>
     <?= $page ?>
 </main>
 <footer class="container">
