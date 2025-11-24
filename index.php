@@ -11,11 +11,11 @@
 	/**
 	 * Pour se simplifier la vie
 	 */
-	define( 'VIEW_DIR', BASE_DIR . "view/" );
+	define( 'VIEW_DIR', BASE_DIR . "View/" );
 	/**
 	 * Le chemin sous lequel se trouvent les vues
 	 */
-	define( 'PUBLIC_DIR', "public/" );
+	define( 'PUBLIC_DIR', "Public/" );
 	/**
 	 * le chemin où se trouvent les fichiers publics (CSS, JS, IMG)
 	 */
@@ -62,7 +62,7 @@
 		/**
 		 * Si ce n’est pas le cas, on choisit le namespace du controller par défaut
 		 */
-		$ctrlNS = "controller\\" . DEFAULT_CTRL . "Controller";
+		$ctrlNS = "Controller\\" . DEFAULT_CTRL . "Controller";
 	}
 	$ctrl = new $ctrlNS();
 	
